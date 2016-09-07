@@ -17,6 +17,12 @@ module Zoomus
         Utils.require_params([:type, :email], options)
         Utils.parse_response self.class.post('/user/create', :query => options)
       end
+      
+      def user_autocreate(*args)
+        options = Utils.extract_options!(args)
+        Utils.require_params([:type, :email, :password], options)
+        Utils.parse_response self.class.post('/user/autocreate', :query => options)
+      end
 
       def user_delete(*args)
         options = Utils.extract_options!(args)
